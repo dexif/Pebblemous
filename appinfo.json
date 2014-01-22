@@ -16,6 +16,11 @@
         "media": [
             {
                 "type": "png",
+                "name": "BATTERY",
+                "file": "images/battery.png"
+            },
+            {
+                "type": "png",
                 "name": "BT_CONNECTED",
                 "file": "images/bt_connected.png"
             },

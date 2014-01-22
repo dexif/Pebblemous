@@ -10,14 +10,14 @@ static BitmapLayer* bt_connected_layer;
 
 int WIDTH = 144;
 int HEIGHT = 168;
-int ICON_WIDTH = 25;
-int ICON_HEIGHT = 25;
+int ICON_WIDTH = 11;
+int ICON_HEIGHT = 11;
 
 static void handle_battery(BatteryChargeState charge_state) {
 	static char battery_text[] = "100% charged";
 
 	if (charge_state.is_charging) {
-		snprintf(battery_text, sizeof(battery_text), "charging");
+		snprintf(battery_text, sizeof(battery_text), "%d%% charging", charge_state.charge_percent);
 	} else {
 		snprintf(battery_text, sizeof(battery_text), "%d%% charged", charge_state.charge_percent);
 	}
@@ -71,7 +71,7 @@ static void do_init(void) {
 
 	/* Bluetooth block */
 	bt_connected = gbitmap_create_with_resource(RESOURCE_ID_BT_DISCONNECTED);
-	bt_connected_layer = bitmap_layer_create(GRect(WIDTH - ICON_WIDTH, HEIGHT - ICON_HEIGHT, ICON_WIDTH, ICON_HEIGHT));
+	bt_connected_layer = bitmap_layer_create(GRect(WIDTH - ICON_WIDTH, 1, ICON_WIDTH, ICON_HEIGHT));
 	bitmap_layer_set_background_color(bt_connected_layer, GColorBlack);
 	layer_add_child(root_layer, bitmap_layer_get_layer(bt_connected_layer));
 
