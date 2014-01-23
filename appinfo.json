@@ -1,5 +1,5 @@
 {
-    "versionLabel": "1.0",
+    "versionLabel": "1.3",
     "uuid": "6891f2d1-9002-404c-ace1-8b80bb9dc6e0",
     "appKeys": {},
     "longName": "Pebblemous",
@@ -14,11 +14,6 @@
     },
     "resources": {
         "media": [
-            {
-                "type": "png",
-                "name": "BATTERY",
-                "file": "images/battery.png"
-            },
             {
                 "type": "png",
                 "name": "BT_CONNECTED",

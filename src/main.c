@@ -10,16 +10,16 @@ static BitmapLayer* bt_connected_layer;
 
 int WIDTH = 144;
 int HEIGHT = 168;
-int ICON_WIDTH = 11;
-int ICON_HEIGHT = 11;
+int ICON_WIDTH = 14;
+int ICON_HEIGHT = 14;
 
 static void handle_battery(BatteryChargeState charge_state) {
-	static char battery_text[] = "100% charged";
+	static char battery_text[] = "100%";
 
 	if (charge_state.is_charging) {
-		snprintf(battery_text, sizeof(battery_text), "%d%% charging", charge_state.charge_percent);
+		snprintf(battery_text, sizeof(battery_text), "%d%%  charging", charge_state.charge_percent);
 	} else {
-		snprintf(battery_text, sizeof(battery_text), "%d%% charged", charge_state.charge_percent);
+		snprintf(battery_text, sizeof(battery_text), "%d%%", charge_state.charge_percent);
 	}
 	text_layer_set_text(battery_layer, battery_text);
 }
@@ -63,7 +63,7 @@ static void do_init(void) {
 	layer_add_child(root_layer, bitmap_layer_get_layer(Anonymous_Layer));
 
 	/* Time block */
-	time_layer = text_layer_create(GRect(0, 40, frame.size.w, 34));
+	time_layer = text_layer_create(GRect(0, 52, frame.size.w, 34));
 	text_layer_set_text_color(time_layer, GColorBlack);
 	text_layer_set_background_color(time_layer, GColorClear);
 	text_layer_set_font(time_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD ));
@@ -76,11 +76,11 @@ static void do_init(void) {
 	layer_add_child(root_layer, bitmap_layer_get_layer(bt_connected_layer));
 
 	/* Battery block */
-	battery_layer = text_layer_create(GRect(0, 145, frame.size.w, 34 ));
+	battery_layer = text_layer_create(GRect(2, -2, frame.size.w, 16 ));
 	text_layer_set_text_color(battery_layer, GColorWhite);
 	text_layer_set_background_color(battery_layer, GColorClear);
-	text_layer_set_font(battery_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
-	text_layer_set_text_alignment(battery_layer, GTextAlignmentCenter);
+	text_layer_set_font(battery_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+	text_layer_set_text_alignment(battery_layer, GTextAlignmentLeft);
 	text_layer_set_text(battery_layer, "100% charged");
 
 	/* Init blocks */
